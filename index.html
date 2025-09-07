@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PowerPack AR — Single App</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- model-viewer for markerless AR -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- A-Frame + AR.js for marker-based AR -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap header-inner">
+      <div class="brand">PowerPack AR</div>
+      <div class="user-area" id="userArea" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- LOGIN VIEW -->
+    <section id="view-login" class="card center-card">
+      <h1>🔐 Login to PowerPack AR</h1>
+      <form id="loginForm" class="form">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" required>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="At least 6 characters" minlength="6" required>
+
+        <div class="row">
+          <button type="submit" class="btn primary">Login</button>
+        </div>
+
+        <div id="loginError" class="error" aria-live="polite"></div>
+        <small class="hint">Demo stores session locally. For real accounts use Firebase/Supabase.</small>
+      </form>
+    </section>
+
+    <!-- FIELD CHOICE VIEW -->
+    <section id="view-choose" class="card hide">
+      <div class="grid-two">
+        <div>
+          <h2>Choose your field</h2>
+          <p class="muted">Pick the AR domain you want to explore.</p>
+
+          <div class="field-grid">
+            <button class="field-card" data-field="science">🧪 Science<br><small class="muted">Molecules & planets</small></button>
+            <button class="field-card" data-field="history">📜 History<br><small class="muted">Artifacts & monuments</small></button>
+            <button class="field-card" data-field="geography">🌍 Geography<br><small class="muted">Globe & maps</small></button>
+            <button class="field-card" data-field="technology">💻 Technology<br><small class="muted">Gadgets & chips</small></button>
+            <button class="field-card" data-field="arts">🎨 Arts<br><small class="muted">Sculptures & paintings</small></button>
+          </div>
+        </div>
+
+        <aside>
+          <h3>Quick Help</h3>
+          <ul>
+            <li>Print HIRO/KANJI markers for marker AR.</li>
+            <li>Use Chrome (Android) or Safari (iOS). Host over HTTPS for camera access on mobile.</li>
+            <li>Markerless uses model-viewer (tap the AR button to place).</li>
+          </ul>
+          <p class="muted">Markers: <a href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/three.js/data/HIRO.jpg" target="_blank">HIRO</a> | <a href="https://raw.githubusercontent.com/AR-js-org/AR.js/master/three.js/data/KANJI.png" target="_blank">KANJI</a></p>
+        </aside>
+      </div>
+
+      <div class="row mt12">
+        <button id="logoutFromChoose" class="btn ghost">Logout</button>
+      </div>
+    </section>
+
+    <!-- AR EXPERIENCE VIEW -->
+    <section id="view-ar" class="card hide">
+      <div class="controls-row">
+        <div>
+          <h2 id="fieldTitle">Loading...</h2>
+          <p id="fieldDesc" class="muted">Preparing your experience…</p>
+        </div>
+        <div class="controls">
+          <label for="modeSelect" class="muted">Mode</label>
+          <select id="modeSelect" aria-label="AR mode">
+            <option value="markerless">Place in world (markerless)</option>
+            <option value="marker">Use marker (marker-based)</option>
+          </select>
+          <button id="backBtn" class="btn ghost">Back</button>
+          <button id="logoutBtn" class="btn ghost">Logout</button>
+        </div>
+      </div>
+
+      <div id="experienceArea" class="experience-area">
+        <div id="viewerHolder" class="viewer-holder"></div>
+        <div id="markerHolder" class="marker-holder"></div>
+        <div id="fallback" class="fallback hide">AR not supported. Try Chrome on Android, Safari on iOS, and host over HTTPS.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap muted">PowerPack AR • Demo — put on HTTPS for mobile camera access</footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+:root{
+  --bg:#071225; --card:#0b1724; --muted:#9fb0ea; --accent:#06b6d4; --accent2:#fb923c;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,system-ui,-apple-system;background:linear-gradient(180deg,#071025,#07172b);color:#e6eef9}
+.wrap{max-width:1100px;margin:0 auto;padding:18px}
+.topbar{border-bottom:1px solid rgba(255,255,255,0.03);background:linear-gradient(90deg,#02263b,#06364b)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:700;padding:12px 0}
+.user-area{color:var(--muted);font-size:0.9rem}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;margin:12px 0;border:1px solid rgba(255,255,255,0.03)}
+.center-card{text-align:center}
+.form label{display:block;margin-top:8px;font-weight:600}
+input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--muted)}
+.row{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:12px}
+.grid-two{display:grid;grid-template-columns:1fr 360px;gap:18px}
+@media(max-width:900px){.grid-two{grid-template-columns:1fr}.controls{margin-top:12px;}}
+.btn{padding:8px 12px;border-radius:8px;border:0;background:#0a1220;color:#e6eef9;cursor:pointer}
+.btn.primary{background:linear-gradient(90deg,var(--accent),#0891b2);color:#022}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.03)}
+.muted{color:rgba(230,238,255,0.7)}
+.field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.field-card{padding:18px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.01);cursor:pointer;font-weight:700;text-align:center}
+.field-card small{display:block;margin-top:8px;font-weight:600;color:var(--muted)}
+.error{color:#ffb4b4;margin-top:8px}
+.hint{display:block;margin-top:8px;color:var(--muted)}
+.controls-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.controls{display:flex;align-items:center;gap:8px}
+.viewer-holder, .marker-holder{min-height:420px;display:flex;align-items:center;justify-content:center}
+.viewer-holder model-viewer{width:100%;height:420px;border-radius:8px}
+.fallback{padding:20px;text-align:center}
+.muted a{color:#9cc9ff}
+.experience-area{margin-top:12px}
+.mt12{margin-top:12px}
+.toast{position:fixed;right:18px;bottom:18px;background:rgba(2,8,23,0.9);padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);display:none;color:var(--muted)}
+.toast.show{display:block}
+.hide{display:none}
